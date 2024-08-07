@@ -8,7 +8,8 @@ const DishList = () => {
     useEffect(() => {
         const fetchDishes = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/dishes');
+                const res = await axios.get('http://localhost:5001/api/dishes');
+                console.log('Fetched dishes:', res.data);
                 setDishes(res.data);
             } catch (error) {
                 console.error('Error fetching dishes:', error);
@@ -17,6 +18,7 @@ const DishList = () => {
 
         fetchDishes();
     }, []);
+
 
     const handleDelete = async (id) => {
         try {

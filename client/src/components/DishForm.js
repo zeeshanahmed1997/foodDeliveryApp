@@ -15,6 +15,7 @@ const DishForm = () => {
             const fetchDish = async () => {
                 try {
                     const res = await axios.get(`http://localhost:5001/api/dishes/${id}`);
+                    debugger
                     setName(res.data.name);
                     setDescription(res.data.description);
                     setPrice(res.data.price);
@@ -33,8 +34,10 @@ const DishForm = () => {
         const dish = { name, description, price, category };
         try {
             if (id) {
+                debugger
                 await axios.put(`http://localhost:5001/api/dishes/${id}`, dish);
             } else {
+                debugger
                 await axios.post('http://localhost:5001/api/dishes', dish);
             }
             navigate('/');

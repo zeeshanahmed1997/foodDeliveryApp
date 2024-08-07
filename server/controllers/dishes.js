@@ -4,6 +4,7 @@ const Dish = require('../models/dish');
 exports.getDishes = async (req, res) => {
     try {
         const dishes = await Dish.find();
+        console.log('Dishes found:', dishes);
         res.json(dishes);
     } catch (err) {
         res.status(500).json({ message: err.message });
