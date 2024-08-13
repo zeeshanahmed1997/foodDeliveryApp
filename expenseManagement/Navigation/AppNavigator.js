@@ -10,6 +10,11 @@ import CustomHeader from '../Components/CustomHeader'; // Import your custom hea
 const Drawer = createDrawerNavigator();
 
 function AppNavigator() {
+  const handleUserImagePress = () => {
+    // Handle user image press action here
+    console.log('User image clicked!');
+  };
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -28,7 +33,11 @@ function AppNavigator() {
           header: () => {
             // Determine the header title based on the current route
             const title = getHeaderTitle(route.name);
-            return <CustomHeader navigation={navigation} title={title} />;
+            <CustomHeader 
+            navigation={navigation}
+            title="Your App Title"
+            onUserImagePress={handleUserImagePress} // Pass the function here
+          />
           },
         })}
       >
