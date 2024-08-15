@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import AppNavigator from './Navigation/AppNavigator'; // Import your main navigator
+import { StyleSheet } from 'react-native';
+import StackNavigator from './Navigation/StackNavigator'; // Ensure the path is correct
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <AppNavigator />
-    </View>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 };
 

@@ -5,10 +5,9 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
       <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
+        title="Go to User Profile"
+        onPress={() => navigation.navigate('UserProfile')}
       />
     </View>
   );
