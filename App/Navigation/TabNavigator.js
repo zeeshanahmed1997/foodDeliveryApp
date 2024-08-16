@@ -5,7 +5,7 @@ import CalendarScreen from '../Screens/CalendarScreen';
 import AddScreen from '../Screens/AddScreen';
 import SettingsScreen from '../Screens/SettingsScreen';
 import NotificationsScreen from '../Screens/NotificationsScreen';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import CustomHeader from '../Components/CustomHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHome, faCalendar, faPlusCircle, faCog, faBell } from '@fortawesome/free-solid-svg-icons';
@@ -13,9 +13,8 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const Tab = createBottomTabNavigator();
 
-// Map screen names to FontAwesome icons
 const iconMap = {
-  Home: faHome,
+  Overview: faHome,
   Calendar: faCalendar,
   Add: faPlusCircle,
   Settings: faCog,
@@ -23,7 +22,7 @@ const iconMap = {
 };
 
 const iconColorMap = {
-  Home: '#007BFF',
+  Overview: '#007BFF',
   Calendar: '#28A745',
   Add: '#ffffff',
   Settings: '#FFC107',
@@ -31,7 +30,7 @@ const iconColorMap = {
 };
 
 const iconSizeMap = {
-  Home: 25,
+  Overview: 25,
   Calendar: 25,
   Add: 50,
   Settings: 25,
@@ -44,18 +43,9 @@ function TabNavigator({ navigation }) {
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
         headerShown: true,
-        tabBarActiveBackgroundColor: 'gainsboro',
-        tabBarStyle: {
-          height: 60,
-          paddingBottom: 0,
-        },
-        tabBarBadgeStyle: {
-          backgroundColor: 'red',
-          color: 'white',
-          fontSize: 12,
-          paddingHorizontal: 6,
-          borderRadius: 10,
-        },
+        tabBarActiveBackgroundColor: '#e0e0e0', // Light gray background for active tab
+        tabBarStyle: styles.tabBar,
+        tabBarBadgeStyle: styles.tabBarBadge,
         tabBarIcon: ({ color, size }) => {
           const icon = iconMap[route.name];
           const iconColor = iconColorMap[route.name] || color;
@@ -80,7 +70,7 @@ function TabNavigator({ navigation }) {
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Overview" component={HomeScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
       <Tab.Screen name="Add" component={AddScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
@@ -97,8 +87,8 @@ function TabNavigator({ navigation }) {
 
 function getHeaderTitle(routeName) {
   switch (routeName) {
-    case 'Home':
-      return 'Home';
+    case 'Overview':
+      return 'Overview';
     case 'Calendar':
       return 'Calendar';
     case 'Add':
@@ -113,6 +103,21 @@ function getHeaderTitle(routeName) {
 }
 
 const styles = StyleSheet.create({
+  tabBar: {
+    height: 70,
+    paddingBottom: 5,
+    backgroundColor: '#ffffff', // White background for tab bar
+    borderTopWidth: 1,
+    borderTopColor: '#dddddd', // Light gray border
+    elevation: 5, // Shadow for elevation
+  },
+  tabBarBadge: {
+    backgroundColor: '#DC3545',
+    color: 'white',
+    fontSize: 12,
+    paddingHorizontal: 6,
+    borderRadius: 10,
+  },
   addIconWrapper: {
     borderRadius: 35,
     justifyContent: 'center',

@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 function StackNavigator() {
   // This should be replaced with real authentication state logic
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   return (
     <Stack.Navigator>
