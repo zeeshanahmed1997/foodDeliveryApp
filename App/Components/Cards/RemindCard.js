@@ -1,11 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome, faPlus, faDollar, faBell ,faCalendar, faPlusCircle, faCog } from '@fortawesome/free-solid-svg-icons';
-
 
 const screenWidth = Dimensions.get('window').width;
+
 const RemindCard = ({ isSelected, onPress }) => (
   <TouchableOpacity
     style={[styles.card, isSelected ? styles.selectedCard : styles.defaultCard]}
@@ -13,19 +11,25 @@ const RemindCard = ({ isSelected, onPress }) => (
   >
     {isSelected ? (
       <LinearGradient
-        colors={['#003366', '#006699']}
+        colors={['#2FDAFF', '#0E33F3']}
         style={styles.gradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       >
         <View style={styles.cardContent}>
-        <FontAwesomeIcon icon={faBell} size={20}  />
+          <Image
+            source={require('../../assets/icons/bell.png')}  // Path to your bell icon
+            style={styles.icon} // Styling for the icon
+          />
           <Text style={styles.cardTitle}>Remind</Text>
         </View>
       </LinearGradient>
     ) : (
       <View style={styles.cardContent}>
-               <FontAwesomeIcon icon={faBell} size={20}  />
+        <Image
+          source={require('../../assets/icons/bell.png')}  // Path to your bell icon
+          style={styles.icon} // Styling for the icon
+        />
         <Text style={[styles.cardTitle, styles.defaultText]}>Remind</Text>
       </View>
     )}
@@ -65,9 +69,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    fontSize: 25,
+    width: 40,  // Set the size of the bell icon
+    height: 40, // Set the size of the bell icon
     marginBottom: 8,
-    color: '#fff',
   },
   cardTitle: {
     fontSize: 12,

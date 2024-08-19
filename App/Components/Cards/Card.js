@@ -1,6 +1,5 @@
-// Card.js
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Card = ({ cardType, isSelected, onPress }) => {
@@ -11,20 +10,20 @@ const Card = ({ cardType, isSelected, onPress }) => {
     >
       {isSelected ? (
         <LinearGradient
-          colors={['#003366', '#006699']}
+          colors={['#2FDAFF', '#0E33F3']}
           style={styles.gradient}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
         >
           <View style={styles.cardContent}>
-            <Text style={styles.icon}>{getIcon(cardType)}</Text>
+            <Image source={getIcon(cardType)} style={styles.icon} />
             <Text style={styles.cardTitle}>{getCardTitle(cardType)}</Text>
             <Text style={styles.cardValue}>{getCardValue(cardType)}</Text>
           </View>
         </LinearGradient>
       ) : (
         <View style={styles.cardContent}>
-          <Text style={styles.icon}>{getIcon(cardType)}</Text>
+          <Image source={getIcon(cardType)} style={styles.icon} />
           <Text style={[styles.cardTitle, styles.defaultText]}>{getCardTitle(cardType)}</Text>
           <Text style={[styles.cardValue, styles.defaultText]}>{getCardValue(cardType)}</Text>
         </View>
@@ -33,13 +32,14 @@ const Card = ({ cardType, isSelected, onPress }) => {
   );
 };
 
+// Load different images for each card type
 const getIcon = (cardType) => {
   switch (cardType) {
-    case 'salary': return '💵';
-    case 'expenses': return '💳';
-    case 'savings': return '💰';
-    case 'additional1': return '📊';
-    case 'additional2': return '📈';
+    case 'salary': return require('../../assets/icons/wages.png'); // Replace with your image paths
+    case 'expenses': return require('../../assets/icons/cost.png');
+    case 'savings': return require('../../assets/icons/saving.png');
+    // case 'additional1': return require('../../assets/icons/additional1.png');
+    // case 'additional2': return require('../../assets/icons/additional2.png');
     default: return '';
   }
 };
@@ -49,8 +49,8 @@ const getCardTitle = (cardType) => {
     case 'salary': return 'Total Salary';
     case 'expenses': return 'Monthly Expenses';
     case 'savings': return 'Monthly Savings';
-    case 'additional1': return 'Additional Card 1';
-    case 'additional2': return 'Additional Card 2';
+    // case 'additional1': return 'Additional Card 1';
+    // case 'additional2': return 'Additional Card 2';
     default: return '';
   }
 };
@@ -60,8 +60,8 @@ const getCardValue = (cardType) => {
     case 'salary': return '$5,000';
     case 'expenses': return '$2,000';
     case 'savings': return '$3,000';
-    case 'additional1': return '$1,000';
-    case 'additional2': return '$500';
+    // case 'additional1': return '$1,000';
+    // case 'additional2': return '$500';
     default: return '';
   }
 };
@@ -99,9 +99,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    fontSize: 25,
+    width: 40,  // Set the width of the image icon
+    height: 40, // Set the height of the image icon
     marginBottom: 8,
-    color: '#fff',
   },
   cardTitle: {
     fontSize: 12,

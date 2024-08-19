@@ -78,7 +78,7 @@ function HomeScreen({ navigation }) {
         )}
         pagingEnabled
       >
-        {['salary', 'expenses', 'savings', 'additional1', 'additional2'].map((cardType, index) => (
+        {['salary', 'expenses', 'savings'].map((cardType, index) => (
           <Card
             key={cardType}
             cardType={cardType}
@@ -88,7 +88,7 @@ function HomeScreen({ navigation }) {
         ))}
       </ScrollView>
       <View style={styles.dotsContainer}>
-        {['salary', 'expenses', 'savings', 'additional1', 'additional2'].map((_, index) => {
+        {['salary', 'expenses', 'savings'].map((_, index) => {
           const inputRange = [(index - 1) * 150, index * 150, (index + 1) * 150];
           const dotWidth = scrollX.interpolate({
             inputRange,

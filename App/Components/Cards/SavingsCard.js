@@ -1,31 +1,35 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome, faPlus ,faCalendar, faPlusCircle, faCog, faBell } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+
 const screenWidth = Dimensions.get('window').width;
 
 const SavingsCard = ({ isSelected, onPress }) => (
-    
   <TouchableOpacity
     style={[styles.card, isSelected ? styles.selectedCard : styles.defaultCard]}
     onPress={onPress}
   >
     {isSelected ? (
       <LinearGradient
-        colors={['#003366', '#006699']}
+        colors={['#2FDAFF', '#0E33F3']}
         style={styles.gradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       >
         <View style={styles.cardContent}>
-        <FontAwesomeIcon icon={faPlus} size={20}  />
+          <Image
+            source={require('../../assets/icons/plus.png')}  // Path to your add icon
+            style={styles.icon} // Styling for the icon
+          />
           <Text style={styles.cardTitle}>Savings</Text>
         </View>
       </LinearGradient>
     ) : (
       <View style={styles.cardContent}>
-              <FontAwesomeIcon icon={faPlus} size={20}  />
+        <Image
+          source={require('../../assets/icons/plus.png')}  // Path to your add icon
+          style={styles.icon} // Styling for the icon
+        />
         <Text style={[styles.cardTitle, styles.defaultText]}>Savings</Text>
       </View>
     )}
@@ -35,12 +39,12 @@ const SavingsCard = ({ isSelected, onPress }) => (
 const styles = StyleSheet.create({
   card: {
     borderRadius: 8,
-    width: screenWidth * 0.25, // 30% of screen width
+    width: screenWidth * 0.25, // 25% of screen width
     height: 100,
     marginHorizontal: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'gainsboro'
+    backgroundColor: 'gainsboro',
   },
   selectedCard: {
     // No border for selected card, gradient applied
@@ -65,9 +69,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    fontSize: 25,
+    width: 40,  // Set the size of the icon
+    height: 40, // Set the size of the icon
     marginBottom: 8,
-    color: '#fff',
   },
   cardTitle: {
     fontSize: 12,
