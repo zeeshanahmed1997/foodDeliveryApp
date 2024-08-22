@@ -1,84 +1,38 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import commonStyles from '../../assets/Styles/cardsStyles'; // Update with the correct path
 
-const screenWidth = Dimensions.get('window').width;
 const BudgetCard = ({ isSelected, onPress }) => (
   <TouchableOpacity
-    style={[styles.card, isSelected ? styles.selectedCard : styles.defaultCard]}
+    style={[commonStyles.card, isSelected ? commonStyles.selectedCard : commonStyles.defaultCard]}
     onPress={onPress}
   >
     {isSelected ? (
       <LinearGradient
         colors={['#2FDAFF', '#0E33F3']}
-        style={styles.gradient}
+        style={commonStyles.gradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       >
-        <View style={styles.cardContent}>
+        <View style={commonStyles.cardContent}>
           <Image
-            source={require('../../assets/icons/dollar.png')}  // Path to your uploaded icon
-            style={styles.icon} // Styling for the icon
+            source={require('../../assets/icons/dollar.png')}
+            style={commonStyles.icon}
           />
-          <Text style={styles.cardTitle}>Budget</Text>
+          <Text style={commonStyles.cardTitle}>Budget</Text>
         </View>
       </LinearGradient>
     ) : (
-      <View style={styles.cardContent}>
+      <View style={commonStyles.cardContent}>
         <Image
-          source={require('../../assets/icons/dollar.png')}  // Path to your uploaded icon
-          style={styles.icon} // Styling for the icon
+          source={require('../../assets/icons/dollar.png')}
+          style={commonStyles.icon}
         />
-        <Text style={[styles.cardTitle, styles.defaultText]}>Budget</Text>
+        <Text style={[commonStyles.cardTitle, commonStyles.defaultText]}>Budget</Text>
       </View>
     )}
   </TouchableOpacity>
 );
-
-const styles = StyleSheet.create({
-  card: {
-    borderRadius: 8,
-    width: screenWidth * 0.25, // 25% of screen width
-    height: 100,
-    marginHorizontal: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'gainsboro',
-  },
-  selectedCard: {
-    // No border for selected card, gradient applied
-  },
-  defaultCard: {
-    borderWidth: 2,
-    borderColor: 'gainsboro',
-  },
-  gradient: {
-    borderRadius: 8,
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-  cardContent: {
-    position: 'absolute',
-    zIndex: 1,
-    alignItems: 'center',
-  },
-  icon: {
-    width: 40,  // Set the size of the icon
-    height: 40, // Set the size of the icon
-    marginBottom: 8,
-  },
-  cardTitle: {
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  defaultText: {
-    color: 'black',
-  },
-});
 
 export default BudgetCard;
