@@ -10,7 +10,7 @@ const RemindCard = ({ isSelected, onPress }) => (
   >
     {isSelected ? (
       <LinearGradient
-        colors={['#2FDAFF', '#0E33F3']}
+        colors={['#003366', '#003366']}
         style={commonStyles.gradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}

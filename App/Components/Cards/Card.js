@@ -10,7 +10,7 @@ const Card = ({ cardType, isSelected, onPress }) => {
     >
       {isSelected ? (
         <LinearGradient
-          colors={['#2FDAFF', '#0E33F3']}
+          colors={['#003366', '#003366']}
           style={styles.gradient}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
@@ -38,8 +38,6 @@ const getIcon = (cardType) => {
     case 'salary': return require('../../assets/icons/wages.png'); // Replace with your image paths
     case 'expenses': return require('../../assets/icons/cost.png');
     case 'savings': return require('../../assets/icons/saving.png');
-    // case 'additional1': return require('../../assets/icons/additional1.png');
-    // case 'additional2': return require('../../assets/icons/additional2.png');
     default: return '';
   }
 };
@@ -49,8 +47,6 @@ const getCardTitle = (cardType) => {
     case 'salary': return 'Total Salary';
     case 'expenses': return 'Monthly Expenses';
     case 'savings': return 'Monthly Savings';
-    // case 'additional1': return 'Additional Card 1';
-    // case 'additional2': return 'Additional Card 2';
     default: return '';
   }
 };
@@ -60,8 +56,6 @@ const getCardValue = (cardType) => {
     case 'salary': return '$5,000';
     case 'expenses': return '$2,000';
     case 'savings': return '$3,000';
-    // case 'additional1': return '$1,000';
-    // case 'additional2': return '$500';
     default: return '';
   }
 };
@@ -70,7 +64,7 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 8,
     width: 150,
-    height: 150,
+    height: 120,
     marginHorizontal: 8,
     alignItems: 'center',
     justifyContent: 'center',
@@ -94,21 +88,33 @@ const styles = StyleSheet.create({
     left: 0,
   },
   cardContent: {
-    position: 'absolute',
-    zIndex: 1,
+    position: 'relative',
     alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    paddingTop: 16,
+    paddingHorizontal: 16,
   },
   icon: {
     width: 40,  // Set the width of the image icon
     height: 40, // Set the height of the image icon
-    marginBottom: 8,
+    position: 'absolute',
+    top: 8, // Adjust the distance from the top
+    left: 10, // Adjust the distance from the right
   },
   cardTitle: {
     fontSize: 12,
     fontWeight: 'bold',
+    position: 'absolute',
+    marginTop: 50, // Adjust margin to avoid overlap with the icon
+    top: 0, // Adjust the distance from the top
+    left: 10, // Adjust the distance from the right
   },
   cardValue: {
     fontSize: 18,
+    position: 'absolute',
+    top: 80, // Adjust the distance from the top
+    left: 40, // Adjust the distance from the right
   },
   defaultText: {
     color: 'black', // Color for non-selected cards
